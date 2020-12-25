@@ -215,12 +215,12 @@ if __name__ == '__main__':
     review = [jieba.lcut(line) for line in review]
     word2ix, ix2word, max_len, av_len = build_word_dict(review)
     print("句子词数：", max_len, av_len)
-    av_len = 100
+    av_len = 125
     train_d, train_l, test, test_l = word_emmbeding(review, label, word2ix, av_len)
 
     train_iter = DataLoader(MyDataset(train_d, train_l), batch_size=64, shuffle=False)
     test_iter = DataLoader(MyDataset(test, test_l), batch_size=64, shuffle=False)
-    model = LSTM(ix2word, 300, 300)
+    model = LSTM(ix2word, 100, 100)
     lr, num_epochs = 0.01, 10
     optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
     loss = nn.CrossEntropyLoss()
