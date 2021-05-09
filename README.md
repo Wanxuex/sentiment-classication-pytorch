@@ -8,5 +8,5 @@
 
 python: 3.6
 
-putorch: 1.5.0
+pytorch: 1.5.0
 
